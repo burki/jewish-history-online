@@ -21,7 +21,8 @@ parameters:
 framework:
     secret: '%kernel.secret%'
     # JMS\TranslationBundle\JMSTranslationBundle needs validation
-    validation: ~
+    validation:
+        email_validation_mode: html5
     translator:
         fallbacks: ['%fallback_locale%']
         logging: false
@@ -35,6 +36,10 @@ framework:
             xslt_cache_pool:
                 adapter: cache.adapter.filesystem
                 default_lifetime: 2592000 # 30 days
+    php_errors:
+        log: true
+    handle_all_throwables: true
+    http_method_override: false
 
 twig:
     globals:
@@ -108,6 +113,8 @@ doctrine:
                 JSON_UNQUOTE: Scienta\DoctrineJsonFunctions\Query\AST\Functions\Mysql\JsonUnquote
             datetime_functions:
                 YEAR:       DoctrineExtensions\Query\Mysql\Year
+        enable_lazy_ghost_objects: true
+        report_fields_where_declared: false # TODO: fix duplication of Place.type before setting to true
 
 stof_doctrine_extensions:
     orm:
