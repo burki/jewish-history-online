@@ -38,6 +38,7 @@ parameters:
     app.datacite.user: YOUR.USER
     app.datacite.password: "secret"
     app.datacite.prefix: 10.23691
+    app.datacite.url_production_adjust: []
 
     # if you want to use a wordpress installation for news
     # app.wp-rest.url: "http://juedische-geschichte-online.net/projekt/"
